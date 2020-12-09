@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Task Manager</title>
+{% endblock %}
+
+{% block body %}
+
+    <style>
+        .table_content {
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+            border: 2px solid black
+        }
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            color: grey;
+            text-decoration: underline;
+        }
+    </style>
+
+    {% if session.name %}
+    You are logged in as 
+    {% if session.name == admin %}
+        <b style="color:red; font-weight: bold;">Admin</b>.
+    {% else %}
+        {{ session.name }}.
+    {% endif %}
+         <a href="/logout">Log out</a>
+    {% else %}
+    You are not logged in. <a href="/login">Log in</a>.
+    {% endif %}    
+
+    <div class="content">
+        <h1>Task Manager</h1>
+        {% if tasks|length < 1 %}
+        <h4>There are no tasks. Creat one below!</h4>
+        {% else %}
+
+        <table class="table_content" style="padding: 5px">
+            <tr>
+                <th class="table_content">No.</th>
+                <th class="table_content">Task</th>
+                <th class="table_content">Added by</th>
+                <th class="table_content">Added time</th>
+                <th class="table_content">Actions</th>
+            </tr>
+            {% for task in tasks %}
+                <tr>
+                    <td class="table_content">{{ task.id }}</td>
+                    <td style="max-width: auto; width: 220px; word-wrap:break-word;" class="table_content">{{ task.content }}</td>
+                    {% if task.added_by == admin %}
+                        <td  class="table_content" style="color:red; font-weight: bold;">Admin</td>
+                    {% else %}
+                        <td  class="table_content">{{ task.added_by }}</td>
+                    {% endif %}
+                    <td  class="table_content">{{ task.date_created.date() }}
+                        <br>
+                        {{ task.date_created.time().strftime('%H:%M:%S') }}
+                    </td>
+                    <td  class="table_content">
+                        <a style="color:green" href="/delete/{{ task.id }}">Delete</a> <br>
+                        <a style="color:blue" href="/update/{{ task.id }}">Update</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        <br>
+        <form action="/" method="post">
+            <input maxlength="199" autocomplete="off" autofocus placeholder="TAsk.." name="content" id="content" type="text">
+            <input type="submit" value="Add Task">
+        </form>
+
+    </div>
+{% endblock %}

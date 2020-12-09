@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Task Manager</title>
+{% endblock %}
+
+{% block body %}
+
+    <h1 style="margin-top: 50px;">Login page</h1>
+
+    <form style="margin-top: 30px;" action="/login" method="post">
+        <input maxlength="18" autocomplete="off" autofocus name="name" placeholder="Name" type="text">
+        <br>
+        <input autocomplete="off" style="margin-top: 21px;" type="password" method="post" name="pwd" placeholder="Password" id="">
+        <br>
+        <input style="margin-top: 21px;" type="submit" value="Log In">
+    </form>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% block head %} {% endblock %}
+    <style>
+        html {
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+        body {
+            position: auto;
+            text-align:center;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: center;
+            font-size: 16px;
+            font-family: Cursive;
+        }
+        input[type=text] {
+            padding: 3px;
+            font-size: 18px;
+            border: 2px solid #555;
+            border-radius: 0.3em;
+        }
+        input[type=text]:focus {
+            border: 2.5px solid green;
+        }
+        input[type=password] {
+            padding: 3px;
+            font-size: 18px;
+            border: 2px solid #555;
+            border-radius: 0.3em;
+        }
+        input[type=password]:focus {
+            border: 2.5px solid green;
+        }
+        input[type=submit] {
+            padding: 3px;
+            transition-duration: 0.4s;
+            background-color: white;
+            border-color: red;
+            border-radius: 12px;
+            font-size: 20px;
+            padding: 5px 12px;
+        }
+        input[type=submit]:hover {
+            background-color: red;
+            color: white;
+        }
+        footer{ 
+            position: relative;     
+            text-align: center;
+            top: 20px;    
+            bottom: 12px; 
+            width: 100%;
+        }
+</style>
+</head>
+<body>
+    {% block body %} {% endblock %}
+    <footer>
+        <h3>Hacker Boy & Companies</h3>
+        <h6>
+            <i>No terms & conditions or rules required for this websit's Admin. ;)</i>
+            <br>
+            &copy;2020 Copyright, Hacker Boy, LLC.</h6>
+        <!--&copy; &#169;-->
+    </footer>
+</body>
+</html>
