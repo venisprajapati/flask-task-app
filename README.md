@@ -17,8 +17,8 @@
     - flask_cors
 * Deployment is done in Heroku
 
-### Refer to screen-shots also
+### Refer to the screen-shots also
 
-
+<a href="https://github.com/venisprajapati/flask-task-app/tree/main/Screen-shots"> Screen-shots link </a>
 
 *thank you for reading completely. lol*
